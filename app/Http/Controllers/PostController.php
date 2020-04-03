@@ -94,6 +94,8 @@ class PostController extends Controller
 	        return view('posts.edit', ['post' => $post, 'users' => $users]);
 	    }
 
+
+    
     public function update($request)
     {
         $request=request();
@@ -107,8 +109,6 @@ class PostController extends Controller
 
         return redirect()->route('posts.show', ['post' => $request->post]);
     }
-
-
 
     
     

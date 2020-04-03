@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::group(['middleware'=>'auth'],function(){
 
-	Route::get('/posts','PostController@index')->name('posts.index')->middleware('auth');
+Route::get('/posts','PostController@index')->name('posts.index')->middleware('auth');
 
 
 Route::get('/posts/create','PostController@create')->name('posts.create');
@@ -33,6 +33,7 @@ Route::get('/posts/{post}/edit', 'PostController@edit')->name('posts.edit');
 Route::put('/posts/{post}', 'PostController@update')->name('posts.update');
 Route::delete('/posts/{post}','PostController@destroy')->name('posts.destroy');
 
+Route::get('/posts/','PostController@index')->name('posts.destroy');
 });
 
 
@@ -41,3 +42,7 @@ Route::delete('/posts/{post}','PostController@destroy')->name('posts.destroy');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('login/github', 'Auth\LoginController@redirectToProvider');
+Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
+
+
